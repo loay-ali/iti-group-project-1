@@ -11,20 +11,20 @@
 - [ ] Input ( + Label ),( + Icon ) + Number Input ( Increment & Decrement ) + Select ( Normal , No Background )
 - [ ] Insert Data
   - [ ]  Products
-		- [ ] Name
-		- [ ] Price
-		- [ ] Special Price ( When On Offer )
-		- [ ]  Colors
-		- [ ] Sizes
-		- [ ] Description
-		- [ ] Gallery
-		- [ ] Brand
-		- [ ] Tags
+	- [ ] Name
+	- [ ] Price
+	- [ ] Special Price ( When On Offer )
+	- [ ]  Colors
+	- [ ] Sizes
+	- [ ] Description
+	- [ ] Gallery
+	- [ ] Brand
+	- [ ] Tags
 
-	- [ ]  Collections ( Name & Description )
-		- [ ] Brand 
-		- [ ] Category
-		- [ ] Tags
+- [ ]  Collections ( Name & Description )
+	- [ ] Brand 
+	- [ ] Category
+	- [ ] Tags
 
 * Phase 3
 - [ ] Header + Cart
