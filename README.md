@@ -1,9 +1,9 @@
 # ITI Group Project
 
 * Phase 1
-[ ] -> Font -> Icon Font
-[ ] -> Headings -> Links -> Paragraphs -> Strong -> Span
-[ ] -> Color Variables -> .bg-* & .color-*
+- [ ] Font -> Icon Font
+- [ ] Headings -> Links -> Paragraphs -> Strong -> Span
+- [ ] Color Variables -> .bg-* & .color-*
 
 * Phase 2
 [ ] -> Buttons ( Primary , Inverted , No Bg ) -> Checkbox
