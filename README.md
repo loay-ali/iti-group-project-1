@@ -6,9 +6,13 @@
 - [ ] Color Variables , .bg-* & .color-*
 
 * ## Phase 2
-- [ ] Buttons ( Primary , Inverted , No Bg ) , Checkbox
-* Button State -> ( Idle , Hover , Disabled , Focus )
-- [ ] Input ( + Label ),( + Icon ) + Number Input ( Increment & Decrement ) + Select ( Normal , No Background )
+- [ ] Buttons ( Primary , Inverted , No Bg ) + Checkbox
+* Button States: ( Idle , Hover , Disabled , Focus )
+- [ ] **Input**
+	- [ ] Label
+	- [ ] Icon
+	- [ ] Number Input ( Increment & Decrement )
+	- [ ] Select ( Normal , No Background )
 - [ ] **Insert Data**
   - [ ]  Products
 	- [ ] Name
