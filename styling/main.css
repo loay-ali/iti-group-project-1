@@ -1,0 +1,8 @@
+@font-face {
+	src: url('unitled-sans.otf');
+	font-family: "unitled-sans";
+}
+
+*:not(.bi) {
+	font-family: "unitled-sans";
+}

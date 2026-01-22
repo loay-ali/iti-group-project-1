@@ -1,18 +1,9 @@
 # ITI Group Project
 
 * ## Phase 1
-- [ ] Font , Icon Font
+- [x] Font , Icon Font
 - [ ] Headings , Links , Paragraphs , Strong , Span
 - [ ] Color Variables , .bg-* & .color-*
-
-* ## Phase 2
-- [ ] Buttons ( Primary , Inverted , No Bg ) + Checkbox
-* Button States: ( Idle , Hover , Disabled , Focus )
-- [ ] **Input**
-	- [ ] Label
-	- [ ] Icon
-	- [ ] Number Input ( Increment & Decrement )
-	- [ ] Select ( Normal , No Background )
 - [ ] **Insert Data**
   - [ ]  Products
 	- [ ] Name
@@ -29,6 +20,10 @@
 	- [ ] Brand 
 	- [ ] Category
 	- [ ] Tags
+
+* ## Phase 2
+- [ ] Buttons ( Primary , Inverted , No Bg ) + Checkbox
+* Button States: ( Idle , Hover , Disabled , Focus )
 
 * ## Phase 3
 - [ ] Header + Cart
