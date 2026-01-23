@@ -8,6 +8,62 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel = 'styling/main.css' />
   <body>
-  
+    <header class = 'd-flex align-items-center'>
+      <button class = 'd-block d-md-none bg-transparent border-0' id = 'toggle-main-menu'>
+        <i class = 'bi bi-list'></i>
+      </button>
+      <div id = 'main-menu'>
+        <ul class = 'd-md-inline-block p-0 list-unstyled'>
+          <li class = 'parent-menu'>
+            <a href = '#shop-all'>
+              Shop All
+            </a>
+            <ul class = 'sub-menu'>
+            </ul>
+          </li>
+        </ul>
+        <footer class = 'd-block d-md-none'>
+          <a href = '#login'>
+            <i class = 'bi bi-person'></i>
+            Log in
+          </a>
+          <nav class = 'd-flex' target = '_blank'>
+            <a href = '#facebook-link'>
+              <i class = 'bi bi-facebook'></i>
+            </a>
+            <a href = '#pinterest-link' target = '_blank'>
+              <i class = 'bi bi-pinterest'></i>
+            </a>
+            <a href = '#instagram' target = '_blank'>
+              <i class = 'bi bi-instagram'></i>
+            </a>
+            <a href = '#tiktok' target = '_blank'>
+              <i class = 'bi bi-tiktok'></i>
+            </a>
+          </nav>
+        </footer>
+      </div>
+
+      <img src = 'images/logo.svg' width = '180' alt = "Website's Logo" />
+
+      <ul class = 'd-flex p-0 list-unstyled'>
+        <li>
+          <button id = 'search-panel' class = 'bg-transparent border-0'>
+            <i class = 'bi bi-search'></i>
+          </button>
+        </li>
+        <li>
+          <a href = 'pages/login.html' class = 'button bg-transparent border-0'>
+            <i class = 'bi bi-person'></i>
+          </a>
+        </li>
+        <li>
+          <button id = 'cart-panel' data-count = "0" class = 'bg-transparent border-0'>
+            <i class = 'bi bi-bag'></i>
+          </button>
+        </li>
+      </ul>
+    </header>
+
   </body>
 </html>
