@@ -6,3 +6,65 @@
 *:not(.bi) {
 	font-family: "unitled-sans";
 }
+
+/* ---------- btn 1 -------  */
+.glass-btn {
+ background: transparent;
+  border: 3px solid #2f5e4e;
+  color: #2f5e4e;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border  ease;
+  
+}
+
+.glass-btn:hover {
+  border-width: 4px; 
+}
+.glass-btn:active {
+  transform: scale(1.12);
+}
+
+/* ------ btn 2 ------  */
+.darkGreen-btn{
+
+      background-color: #2f5e4e;
+  color: white;
+  border: 3px solid #2f5e4e;
+  padding: 15px 130px; 
+  font-size: 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.darkGreen-btn:hover {
+  background-color: transparent;
+  color: #2f5e4e;
+  
+}
+.darkGreen-btn:active {
+  transform: scale(1.12); 
+}
+
+/* ---------btn 3---- */
+.cream-btn {
+  background-color: #f5f0dc;
+  color: #1f3b2b;
+  border: none;
+  padding: 14px 48px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.cream-btn:hover {
+  
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.cream-btn:active {
+  transform: scale(1.12);
+}
