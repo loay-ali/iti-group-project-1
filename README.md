@@ -2,27 +2,12 @@
 
 * ## Phase 1
 - [x] Font , Icon Font
-- [ ] Headings , Links , Paragraphs , Strong , Span
-- [ ] Color Variables , .bg-* & .color-*
-- [ ] **Insert Data**
-  - [ ]  Products
-	- [ ] Name
-	- [ ] Price
-	- [ ] Special Price ( When On Offer )
-	- [ ]  Colors
-	- [ ] Sizes
-	- [ ] Description
-	- [ ] Gallery
-	- [ ] Brand
-	- [ ] Tags
-
-- [ ]  Collections ( Name & Description )
-	- [ ] Brand 
-	- [ ] Category
-	- [ ] Tags
+- [x] Headings , Links , Paragraphs , Strong , Span
+- [x] Color Variables , .bg-* & .color-*
+- [x] **Insert Data**
 
 * ## Phase 2
-- [ ] Buttons ( Primary , Inverted , No Bg ) + Checkbox
+- [x] Buttons ( Primary , Inverted , No Bg ) + Checkbox
 * Button States: ( Idle , Hover , Disabled , Focus )
 
 * ## Phase 3
