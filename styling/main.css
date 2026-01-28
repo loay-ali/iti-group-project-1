@@ -60,6 +60,10 @@
 	font-family: "unitled-sans";
 }
 
+html,body {
+  overflow-x:hidden;
+}
+
 .dot-separated-menu li:not(:last-of-type)::after {
   content:"•";
   margin-inline:5px;
