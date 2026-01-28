@@ -120,7 +120,7 @@
           <thead>
             <tr>
               <th class = 'text-left'><small class = 'text-primary'>PRODUCT</small></th>
-              <th class = 'text-right'><small class = 'text-primary'>TOTAL</small></th>
+              <th class = 'text-right' style = 'width:100px;'><small class = 'text-primary'>TOTAL</small></th>
             </tr>
           </thead>
           <tbody id = 'cart-products'>
@@ -132,7 +132,7 @@
         <footer id = 'cart-totals'>
           <div class = 'd-flex align-items-center justify-content-between'>
             <b>Estimated total</b>
-            <span>$xx.xx USD</span>
+            <span id = 'cart-totals'>$xx.xx USD</span>
           </div>
           <small class = 'text-gray' style = 'font-size:11px'>Taxes, discounts and shipping calculated at checkout</small>
           <a href = '#checkout' class = 'p-2 m-auto d-block text-center darkGreen-btn'>Checkout</a>
@@ -168,7 +168,7 @@
                 <p class="product-price">$28.00 USD</p>
               </div>
 
-              <button class="btn product-btn w-100">Choose options</button>
+              <button class="btn product-btn w-100 add-to-cart" data-id = "3">Add to cart</button>
             </div>
 
             <div class="product-card h-100">
