@@ -1,6 +1,6 @@
 //On-Scroll Effect
 const elements = Array.from(document.getElementsByClassName('show-on-scroll'));
-function onScroll() {
+function onScroll(event) {
 	if( (elements[0].offsetTop - (elements[0].offsetHeight / 2)) <= (window.scrollY + (window.innerHeight / 1.5)) ) {
 		console.log(elements[0],"In View!");
 		elements[0].classList.add('show');

@@ -13,7 +13,7 @@
     <section id = 'above-header' class = 'text-center p-1 bg-primary'>
       <a class = 'text-white'>Enjoy free domestic shipping on orders $65+</a>
     </section>
-    <header class = 'd-flex align-items-center justify-content-between bg-secondary p-4'>
+    <header class = 'd-flex align-items-center justify-content-between bg-secondary p-4' id = 'main-site-header'>
       <button class = 'd-block d-md-none bg-transparent border-0' id = 'toggle-main-menu'>
         <i class = 'bi bi-list'></i>
       </button>
@@ -127,15 +127,15 @@
           </tbody>
         </table>
 
-        <!-- You Might Also Like ( Product Card Is Required ) -->
+        <!-- You Might also Like (edit) -->
 
         <footer id = 'cart-totals'>
           <div class = 'd-flex align-items-center justify-content-between'>
             <b>Estimated total</b>
-            <span id = 'cart-totals'>$xx.xx USD</span>
+            <span id = 'cart-totals-summary'>$xx.xx USD</span>
           </div>
           <small class = 'text-gray' style = 'font-size:11px'>Taxes, discounts and shipping calculated at checkout</small>
-          <a href = '#checkout' class = 'p-2 m-auto d-block text-center darkGreen-btn'>Checkout</a>
+          <a href = 'pages/checkout.html' class = 'p-2 m-auto d-block text-center darkGreen-btn'>Checkout</a>
         </footer>
 
         <div class = 'layout'></div>
