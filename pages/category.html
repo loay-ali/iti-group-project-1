@@ -5,7 +5,7 @@
   <title>Free Package Shop</title>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width,initial-scale=1.0' />
-  <link rel="stylesheet" href="../styling/collection.css">
+  <link rel="stylesheet" href="../styling/category.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
@@ -23,6 +23,7 @@
     <div id='main-menu'>
       <ul class='d-md-inline-flex m-0 p-0 list-unstyled'>
    <li class='parent-element px-3' data-child="shop-all-menu">
+  <!-- الرابط الرئيسي (ده اللي بيفتح المنيو) -->
   <a href='#'
      class='bg-transparent border-0 text-primary menu-toggle'
      data-toggle="shop-all-menu"
@@ -31,20 +32,36 @@
     Shop All
   </a>
 
+  <!-- القائمة المنسدلة -->
   <ul class='child-menu' id='shop-all-menu'>
-    <!-- mobile come back -->
+    <!-- زر الرجوع في الموبايل -->
     <li class='d-block d-md-none menu-toggle get-back'
         data-original="open-shop-all"
         data-toggle='shop-all-menu'>
       <i class='bi bi-arrow-left mr-4'></i> Shop All
     </li>
 
+    <!-- الكاتيجوريز مباشرة هنا -->
     <li><a href="category.html?category=Kitchen">Kitchen</a></li>
     <li><a href="category.html?category=Laundry">Laundry</a></li>
     <li><a href="category.html?category=Bathroom">Bathroom</a></li>
     <li><a href="category.html?category=Bedroom">Bedroom</a></li>
+    <!-- أضيفي باقي الكاتيجوريز -->
 
+    <li class='parent-element'>
+      <a href='#' class='menu-toggle text-primary' data-toggle='featured-products' id='featured-products-toggle'>
+        Featured
+      </a>
+      <ul class='child-menu' id='featured-products'>
+        <li class='menu-toggle get-back d-block d-md-none' data-original="featured-products-toggle" data-toggle='featured-products'>
+          <i class='bi bi-arrow-left mr-4'></i> Featured
+        </li>
+        <li>One</li>
+        <li>Two</li>
+      </ul>
+    </li>
 
+    <li>World</li>
   </ul>
 </li>
 
@@ -53,7 +70,7 @@
         </li>
       </ul>
 
-      <!-- mobile footer-->
+      <!-- الـ footer اللي بيظهر في الموبايل -->
       <footer class='d-block d-md-none p-5 position-absolute bottom-0 w-100'>
         <a href='#login' class='text-primary' style='font-size:18px'>
           <i class='bi bi-person'></i>
@@ -77,7 +94,7 @@
     </div>
     </div>
 
-      <a href = 'collection.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
+    <a href='category.html'><img src='../images/logo.svg' width='180' alt="Website's Logo" /></a>
 
     <ul class='d-flex p-0 m-0 list-unstyled' id='icon-list'>
       <li class='mx-2'>
@@ -158,6 +175,7 @@
   <main class="container my-5 product-grid">
 
 
+    <!-- الأقسام هتترندر هنا تلقائيًا -->
   </main>
   <!-- ================================================================================== -->
 
@@ -197,7 +215,7 @@
       </li>
     </ul>
   </footer>
-  <script src="../scripts/collection.js"></script>
+  <script src="../scripts/category.js"></script>
 </body>
 
 </html>
