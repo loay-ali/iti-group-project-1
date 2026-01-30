@@ -6,7 +6,8 @@
     <meta name = 'viewport' content = 'width=device-width,initial-scale=1.0' />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-    <link rel = 'stylesheet' href = 'styling/main.css' />
+    <link rel = 'stylesheet' href = '../styling/main.css' />
+    <link rel="stylesheet" href="../styling/contact-us.css">
   </head>
   <body>
     <section id = 'above-header' class = 'text-center p-1 bg-primary'>
@@ -38,7 +39,7 @@
             </ul>
           </li>
           <li class = 'px-3'>
-            <a href = '#' class = 'text-primary'>About Us</a>
+            <a href = '../pages/about-us.html' class = 'text-primary'>About Us</a>
           </li>
         </ul>
         <footer class = 'd-block d-md-none p-5 position-absolute bottom-0 w-100'>
@@ -63,7 +64,7 @@
         </footer>
       </div>
 
-      <a href = 'index.html'><img src = 'images/logo.svg' width = '180' alt = "Website's Logo" /></a>
+      <a href = '../index.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
 
       <ul class = 'd-flex p-0 m-0 list-unstyled' id = 'icon-list'>
         <li class = 'mx-2'>
@@ -141,17 +142,56 @@
       </section>
     </header>
 
+
+<!-- ------------------main--------------- -->
+
+<!-- Main Content Here -->
     <main>
       
-      <!-- Main Content Here -->
+<section class="contact-section py-5">
+  <div class="container">
+    <div class="contact-content col-lg-8">
+      <h2 class="contact-title">Contact Us</h2>
+
+      <p class="contact-subtitle mt-3">
+        
+        QUESTIONS? COMMENTS? JAST WANT TO SHOW US SOME LOVE?
+      </p>
+
+      <p class="contact-text mt-4">
+        Our Customer Service hours are from 10:00 a.m. – 6:00 p.m. EST Monday – Friday,
+        and we’ll get back to you as soon as we can!
+      </p>
+
+      <p class="contact-text mt-4">
+        Please e-mail us at:
+        <a href="mailto:Support@packagefreeshop.com" class="contact-link">
+          Support@packagefreeshop.com
+        </a>
+      </p>
+
+      <p class="contact-text">
+        We care very much about your experience and our team of real people will always do our best to support you
+      </p>
+    </div>
+  </div>
+</section>
 
     </main>
 
+
+
+
+
+
+
+
+<!-- ---------------footer------------- -->
     <footer class = 'bg-primary px-3 py-5'>
       <nav class = 'd-block d-md-flex justify-content-center align-items-center'>
-        <a href = '#about-us' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
-        <a href = '#contact' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
-        <a href = '#shop-all' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
+        <a href = '../pages/about-us.html' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
+        <a href = '../pages/contact-us.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
+        <a href = '../pages/collection.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
       </nav>
       <ul class = 'd-flex justify-content-center align-items-center px-0 py-5 list-unstyled'>
         <li>
