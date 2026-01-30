@@ -30,7 +30,7 @@
       "brand": "Package Free",
       "price": 18.00,
       "currency": "USD",
-      "category": "Kitchen",
+      "category": "Laundry",
       "eco": true,
       "description": "Compostable reusable dishcloth.",
       "image": "https://media.istockphoto.com/id/1475395472/photo/glass-dropper-bottle-with-white-liquid-essence-serum-or-cream-on-stand-from-natural-stone.webp?a=1&b=1&s=612x612&w=0&k=20&c=Ca5sqoTXV_0uwd3NeTEaAIJWNgM0b2FgOeL3u-vYqsU=",
@@ -179,6 +179,20 @@
       "description": "Compostable reusable dishcloth.",
       "image": "https://media.istockphoto.com/id/1945854987/photo/natural-cosmetic-products-skin-care-concept.jpg?s=1024x1024&w=is&k=20&c=4iax5AjUxpI7v2dYuxTqlakrl0R6UiimnA8bIXGvFXQ=",
       "hover_image_url": "https://media.istockphoto.com/id/1633766006/photo/natural-cosmetic-products-with-green-leaves.jpg?s=1024x1024&w=is&k=20&c=A4xJDJmtoHGSLYtsomhq6yuicC_rQa-xS8kfjyuNLcw="
+    },
+     {
+      "id": 16,
+      "name": "Reusable Swedish Dishcloth",
+      "brand": "Package Free",
+      "price": 18.00,
+      "currency": "USD",
+      "category": "Laundry",
+      "eco": true,
+      "description": "Compostable reusable dishcloth.",
+      "image": "https://media.istockphoto.com/id/1945854987/photo/natural-cosmetic-products-skin-care-concept.jpg?s=1024x1024&w=is&k=20&c=4iax5AjUxpI7v2dYuxTqlakrl0R6UiimnA8bIXGvFXQ=",
+      "hover_image_url": "https://media.istockphoto.com/id/1633766006/photo/natural-cosmetic-products-with-green-leaves.jpg?s=1024x1024&w=is&k=20&c=A4xJDJmtoHGSLYtsomhq6yuicC_rQa-xS8kfjyuNLcw="
     }
+
+   
   ]
 }

@@ -12,7 +12,7 @@ server.get('/',(req,res) => {
 	}else {
 		if( /^[a-z]{1,15}$/i.test(req.query['category']) ) {
 			const d = data.products.filter(product => product.category === req.query['category']);
-			res.send({count: d.length,data: d.products});
+		res.send({count: d.length, data: d});
 		}
 		else {
 			res.sendStatus(403);
