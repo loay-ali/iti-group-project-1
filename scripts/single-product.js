@@ -23,38 +23,24 @@ main.innerHTML = `
 
       <div class="quantity-wrapper">
         <button class="qty-btn" id="decrease">−</button>
-        <span id="quantity">1</span>
+        <input type = "number" value = "1" id="quantity" />
         <button class="qty-btn" id="increase">+</button>
       </div>
     </div>
   </div>
 `;
 
+    document.getElementById('increase').addEventListener('click',event => {
+      increaseQuantity(event);
+    });
+
+    document.getElementById('decrease').addEventListener('click',event => {
+      decreaseQuantity(event);
+    });
+
   })
   .catch(err => {
     main.innerHTML = `<p class="text-danger">Failed to load product</p>`;
     console.error(err);
   });
-
-
-
-  // ================================================
-
-  let quantity = 1;
-
-const quantityEl = document.getElementById('quantity');
-const increaseBtn = document.getElementById('increase');
-const decreaseBtn = document.getElementById('decrease');
-
-increaseBtn.addEventListener('click', () => {
-  quantity++;
-  quantityEl.textContent = quantity;
-});
-
-decreaseBtn.addEventListener('click', () => {
-  if (quantity > 1) {
-    quantity--;
-    quantityEl.textContent = quantity;
-  }
-});
 

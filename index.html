@@ -20,26 +20,28 @@
       <div id = 'main-menu'>
         <ul class = 'd-md-inline-flex m-0 p-0 list-unstyled'>
           <li class = 'parent-element px-3' data-child = "shop-all-menu">
-            <a href = '#' class = 'bg-transparent border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>
+            <a href = 'pages/collection.html' class = 'bg-transparent border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>
               Shop All
             </a>
             <ul class = 'child-menu' id = 'shop-all-menu'>
               <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i> Shop All</li>
               <li class = 'parent-element'>
                 <a href = '#' class = 'menu-toggle text-primary' data-toggle = 'featured-products' id = 'featured-products-toggle'>
-                  Featured
+                  Shop by Category
                 </a>
                 <ul class = 'child-menu' id = 'featured-products'>
                   <li class = 'menu-toggle get-back d-block d-md-none' data-original = "featured-products-toggle" data-toggle='featured-products'><i class = 'bi bi-arrow-left mr-4'></i> Featured</li>
-                  <li>One</li>
-                  <li>Two</li>
+                  <li><a href = 'pages/category.html?category=Laundry'>Laundry</a></li>
+                  <li><a href = 'pages/category.html?category=Kitchen'>Kitchen</a></li>
                 </ul>
               </li>
-              <li>World</li>
             </ul>
           </li>
           <li class = 'px-3'>
-            <a href = '#' class = 'text-primary'>About Us</a>
+            <a href = 'pages/about-us.html' class = 'text-primary'>About Us</a>
+          </li>
+          <li class = 'px-3'>
+            <a href="pages/contact-us.html" class = 'text-primary'>Contact Us</a>
           </li>
         </ul>
         <footer class = 'd-block d-md-none p-5 position-absolute bottom-0 w-100'>
@@ -78,7 +80,7 @@
           </a>
         </li>
         <li class = 'mx-2'>
-          <button id = 'open-cart-panel' data-count = "2" class = 'bg-transparent border-0 text-primary'>
+          <button id = 'open-cart-panel' data-count = "0" class = 'bg-transparent border-0 text-primary'>
             <i class = 'bi bi-bag'></i>
           </button>
         </li>
@@ -113,7 +115,7 @@
 
         <section id = 'empty-cart' class = 'd-flex flex-column justify-content-center align-items-center p-3'>
           <strong>Your cart is empty</strong>
-          <button class = 'darkGreen-btn p-2 mt-2'>Continue shopping</button>
+          <a class = 'darkGreen-btn p-2 mt-2' href = 'pages/collection.html'>Continue shopping</a>
         </section>
 
         <table class = 'w-100' id = 'cart-products-table'>
@@ -126,9 +128,7 @@
           <tbody id = 'cart-products'>
           </tbody>
         </table>
-
-        <!-- You Might also Like (edit) -->
-
+        
         <footer id = 'cart-totals'>
           <div class = 'd-flex align-items-center justify-content-between'>
             <b>Estimated total</b>
@@ -467,9 +467,9 @@
 
     <footer class = 'bg-primary px-3 py-5'>
       <nav class = 'd-block d-md-flex justify-content-center align-items-center'>
-        <a href = '#about-us' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
-        <a href = '#contact' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
-        <a href = '#shop-all' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
+        <a href = 'pages/about-us.html' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
+        <a href = 'pages/contact-us.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
+        <a href = 'pages/collection.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
       </nav>
       <ul class = 'd-flex justify-content-center align-items-center px-0 py-5 list-unstyled'>
         <li>

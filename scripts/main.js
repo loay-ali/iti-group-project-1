@@ -54,7 +54,18 @@ document.body.addEventListener('click',event => {
 		const productId = event.target.dataset['id'];
 		cart[productId] = ~~(cart[productId]) + 1;
 	
-	localStorage.setItem('cart',JSON.stringify(cart));
+		localStorage.setItem('cart',JSON.stringify(cart));
+	}
+	if( event.target.classList.contains('remove-from-cart') || event.target.classList.contains('bi-trash') ) {
+		const cart = getCart();
+		const productId = event.target.nodeName == 'BUTTON' ? event.target.dataset['id']:event.target.parentElement.dataset['id'];
+		delete cart[productId];
+
+		console.log(productId);
+		
+		localStorage.setItem('cart',JSON.stringify(cart));
+
+		fillCart(cart);
 	}
 });
 
@@ -95,7 +106,7 @@ function fillCart(data) {
 
 		const dataField = document.createElement('td');
 		dataField.classList = 'cart-grid-field';
-		
+
 		const img = document.createElement('img');
 		img.src = productData.image;
 		img.alt = productData.name + " Image";
@@ -105,18 +116,48 @@ function fillCart(data) {
 		brand.innerText = productData.brand;
 		brand.className = 'text-primary cart-product-brand';
 
-		const title = document.createElement('span');
+		const title = document.createElement('a');
 		title.innerText = productData.name;
 		title.className = 'cart-product-name';
+		title.href = 'pages/single-product.html?id='+ productData.id;
 		
 		const price = document.createElement('span');
 		price.innerText = "$"+ productData.price;
 		price.className = 'cart-product-price';
 
+		const quantity = document.createElement('div');
+		quantity.className = 'quantity-wrapper';
+
+		const increaseQuantityButton = document.createElement('button');
+		increaseQuantityButton.className = 'qty-btn';
+		increaseQuantityButton.id = 'decrease';
+		increaseQuantityButton.innerText = '-';
+
+		const quantityInput = document.createElement('input');
+		quantityInput.type = 'number';
+		quantityInput.value = currentCart[productData.id];
+		quantityInput.id = 'quantity';
+
+		const decreaseQuantityButton = document.createElement('button');
+		decreaseQuantityButton.className = 'qty-btn';
+		decreaseQuantityButton.id = 'increase';
+		decreaseQuantityButton.innerText = '+';
+
+		quantity.appendChild(increaseQuantityButton);
+		quantity.appendChild(quantityInput);
+		quantity.appendChild(decreaseQuantityButton);
+
+		const remove = document.createElement('button');
+		remove.dataset['id'] = productData.id;
+		remove.className = 'remove-from-cart';
+		remove.innerHTML = "<i class = 'bi bi-trash'></i>";
+
 		dataField.appendChild(img);
 		dataField.appendChild(brand);
 		dataField.appendChild(title);
 		dataField.appendChild(price);
+		dataField.appendChild(quantity);
+		dataField.appendChild(remove);
 
 		tr.appendChild(dataField);
 
@@ -156,3 +197,17 @@ window.addEventListener('scroll',() => {
 	}
 	lastScrollArea = currentScrollArea;
 });
+
+//Quantity
+const increaseQuantity = function(event) {
+	const quantity = event.target.previousElementSibling;
+	quantity.value = Number(quantity.value) + 1;
+}
+
+const decreaseQuantity = function(event) {
+	const quantity = event.target.nextElementSibling;
+	const value = Number(quantity.value);
+	if( value <= 1 ) return;
+
+	quantity.value = Number(quantity.value) - 1;
+}
