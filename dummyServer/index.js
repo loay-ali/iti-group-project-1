@@ -76,7 +76,6 @@ server.get('/',(req,res) => {
 		}
 	}
 })
-// =======================================================================
 
 //Search Products
 server.get('/search/:query',(req,res) => {
@@ -104,8 +103,6 @@ server.get('/:productId',(req,res) => {
 		res.send(JSON.stringify(productData));
 	}
 });
-
-// =========================================================================
 
 server.listen(8000,() => {
   console.log('Server running on http://localhost:8000');
