@@ -1,42 +1,47 @@
-   // Product data - يمكن تعديلها ديناميكيًا
-        let products = [
-            {
-                id: 1,
-                name: "The Simplest Baby Bottle & Dish Soap",
-                variant: "6 oz",
-                price: 9.00,
-                quantity: 1,
-                image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=200&h=200&fit=crop"
-            }
-        ];
 
         // Current payment method
         let currentPaymentMethod = 'creditcard';
         let currentBillingMethod = 'same';
 
+        var products = [];
+
+        const productsList = document.getElementById('productsList');
+
         // Function to render products
-        function renderProducts() {
-            const productsList = document.getElementById('productsList');
-            productsList.innerHTML = products.map(product => `
-                <div class="product-item">
+        function renderProducts(p = null) {
+            
+            const cart = getCart();
+            const cartProducts = Object.keys(cart).map(Math.abs);
+
+            if( p == null ) p = products;
+
+            let inCartProducts = [];
+
+            for(let product of p ) {
+
+                if( cartProducts.indexOf(product.id) == -1 ) continue;
+
+                product.quantity = cart[product.id];
+                inCartProducts.push(product);
+                productsList.innerHTML += `<div class="product-item">
                     <div class="product-image-wrapper">
                         <img src="${product.image}" alt="${product.name}" class="product-image">
-                        <div class="product-quantity">${product.quantity}</div>
+                        <div class="product-quantity">${cart[product.id]}</div>
                     </div>
                     <div class="product-details">
                         <div class="product-name">${product.name}</div>
-                        <div class="product-variant">${product.variant}</div>
+                        <div class="product-variant">${product.brand}</div>
                     </div>
                     <div class="product-price">$${product.price.toFixed(2)}</div>
                 </div>
-            `).join('');
+            `;}
             
-            updateTotals();
+            updateTotals(inCartProducts);
             updateCartBadge();
         }
 
         // Function to calculate and update totals
-        function updateTotals() {
+        function updateTotals(products) {
             const subtotal = products.reduce((sum, product) => sum + (product.price * product.quantity), 0);
             document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
             document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
@@ -175,4 +180,13 @@
         });
 
         // Initialize
-        renderProducts();
+        const agent = new XMLHttpRequest();
+        agent.open('GET','http://localhost:8000');
+        agent.send();
+
+        agent.addEventListener('readystatechange',() => {
+            if(agent.readyState === 4) {
+                productsList.classList.remove('is-loading');
+                renderProducts(JSON.parse(agent.response).data);
+            }
+        });

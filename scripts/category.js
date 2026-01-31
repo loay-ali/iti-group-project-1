@@ -11,7 +11,7 @@ function Product(data) {
 
     this.render = function () {
       return `
-        <div class="product-grid-item">
+        <a class="product-grid-item" href = "single-product.html?id=${this.id}">
           <div class="product-card">
             <div class="product-img-wrapper">
               <img
@@ -28,10 +28,10 @@ function Product(data) {
                 <p class="product-brand">${this.brand}</p>
                 <p class="product-price">$${this.price.toFixed(2)} ${this.currency}</p>
               </div>
-              <button class="product-btn" onclick="window.location.href='single-product.html?id=${this.id}'">Choose options</button>
+              <button class="product-btn add-to-cart" data-id = "${this.id}">Add to cart</button>
             </div>
           </div>
-        </div>
+        </a>
       `;
     };
   }
