@@ -1,6 +1,6 @@
 .navbar-search-input {
   position: absolute;
-  top: 120%; /* تحت الأيقونة */
+  top: 120%; 
   left: 50%;
   transform: translateX(-50%);
   width: 220px;
@@ -8,7 +8,7 @@
   border-radius: 20px;
   border: 1px solid #ccc;
   font-size: 14px;
-  display: none; /* مخفي */
+  display: none; 
   z-index: 9999;
 }
 
@@ -42,4 +42,6 @@
 #search-suggestions li:hover {
   background: #dedbdb;
 }
-
+.search-wrapper {
+  position: relative;
+}

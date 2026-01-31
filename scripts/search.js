@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('search-input');
   const list = document.getElementById('search-suggestions');
 
+  if (!input || !list) return; 
+  // ===== debounce function =====
   function debounce(fn, delay) {
     let timer;
     return function (...args) {
@@ -11,14 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  toggleBtn.addEventListener('click', () => {
-    input.style.display = input.style.display === 'block' ? 'none' : 'block';
-    input.focus();
-  });
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      input.style.display = input.style.display === 'block' ? 'none' : 'block';
+      input.focus();
+      list.style.display = 'none'; 
+    });
+  }
 
-  input.addEventListener('input', debounce(function() {
+  // ===== handle search =====
+  function handleSearch() {
     const value = input.value.trim();
-
     if (!value) {
       list.innerHTML = '';
       list.style.display = 'none';
@@ -26,25 +31,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetch(`http://localhost:8000/search/${encodeURIComponent(value)}`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then(response => {
         const results = response.data || [];
         list.innerHTML = '';
 
-        results.forEach(product => {
+        if (results.length === 0) {
+          // ===== Bad Search=====
           const li = document.createElement('li');
-          li.textContent = product.name;
-          li.onclick = () => {
-            window.location.href = `single-product.html?id=${product.id}`;
-          };
+          li.innerHTML = `<i class="bi bi-x-circle"></i> No Search Result  `; 
+          li.style.color = '#888';
+          li.style.textAlign = 'center';
+          li.style.padding = '10px';
+          li.style.cursor = 'default'; 
           list.appendChild(li);
-        });
+        } else {
+          results.forEach(product => {
+            const li = document.createElement('li');
+            li.textContent = product.name;
+            li.style.cursor = 'pointer';
+            li.style.padding = '5px 10px';
+            li.onclick = () => {
+              window.location.href = `single-product.html?id=${product.id}`;
+            };
+            list.appendChild(li);
+          });
+        }
 
-        list.style.display = results.length ? 'block' : 'none';
+        list.style.display = 'block';
       })
       .catch(err => {
         console.error('Search fetch error:', err);
+        list.innerHTML = '';
+        list.style.display = 'none';
       });
+  }
 
-  }, 300));
+  // ===== attach debounce =====
+  input.addEventListener('input', debounce(handleSearch, 300));
 });
