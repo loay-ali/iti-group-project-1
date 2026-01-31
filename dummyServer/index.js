@@ -91,6 +91,9 @@ server.get('/search/:query',(req,res) => {
 	}));
 });
 
+
+// =======================================================================
+
 //Single Product
 server.get('/:productId',(req,res) => {
 	const productId = Number(req.params['productId']);
@@ -104,4 +107,7 @@ server.get('/:productId',(req,res) => {
 	}
 });
 
-server.listen(8000,() => {});
+// ========================================================================
+server.listen(8000,() => {
+  console.log('Server running on http://localhost:8000');
+});
