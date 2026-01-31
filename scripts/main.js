@@ -12,6 +12,7 @@ Array.from(document.getElementsByClassName('menu-toggle')).forEach(element => {
 /* Toggle Main Menu (Phone Only) */
 document.getElementById('toggle-main-menu').addEventListener("click",event => {
 	event.currentTarget.classList.toggle('active');
+	document.documentElement.style.overflow = document.documentElement.style.overflow == 'hidden' ? 'auto':'hidden';
 });
 
 /* Toggle Search Menu */
@@ -195,9 +196,13 @@ window.addEventListener('scroll',() => {
 	if( currentScrollArea >= window.innerHeight && currentScrollArea > lastScrollArea ) {
 		headerElement.style.top = "0";
 		headerElement.style.position = 'sticky';
+		headerElement.style.boxShadow = '0 0 10px #000';
 	}else if ( lastScrollArea > currentScrollArea ) {
 		headerElement.style.top = "-100px";
-		if( currentScrollArea < window.innerHeight ) headerElement.style.position = 'static';	
+		if( currentScrollArea < window.innerHeight ) {
+			headerElement.style.position = 'static';
+			headerElement.style.boxShadow = 'none';
+		}	
 	}
 	lastScrollArea = currentScrollArea;
 });
@@ -254,7 +259,7 @@ function fillSlider(data,section) {
 
 	for(let product of data) {
 
-		container.innerHTML += `<a class="product-card h-100" href = 'pages/single-product.html?id=${product.id}'>
+		container.innerHTML += `<a class="text-decoration-none product-card h-100" href = 'pages/single-product.html?id=${product.id}'>
               <img
                 src="${product.image}"
                 class="product-img"
@@ -269,6 +274,34 @@ function fillSlider(data,section) {
 
               <button class="btn product-btn w-100 add-to-cart" data-id = "${product.id}">Add to cart</button>
             </a>`;
+	}
+}
+
+function insertProducts(data,container,maximum) {
+	container.innerHTML = '';
+	const total = maximum;
+
+	for(let product of data) {
+		maximum--;
+		if( maximum < 0 ) break;
+
+		container.innerHTML += `<a class="col-12 col-md-${12 / total} text-decoration-none h-100" href = 'pages/single-product.html?id=${product.id}'>
+            <div class="product-card h-100">  
+				<img
+					src="${product.image}"
+					class="product-img"
+					alt="product"
+				/>
+
+              <div class="product-body">
+                <h6 class="product-title">${product.name}</h6>
+                <p class="product-brand">${product.brand}</p>
+                <p class="product-price">$${product.price} USD</p>
+              </div>
+
+              <button class="glass-btn product-btn w-100 add-to-cart" data-id = "${product.id}">Add to cart</button>
+			</div>
+		</a>`;
 	}
 }
 

@@ -307,9 +307,9 @@ html,body {
   top:calc(100% + 10px);
   left:0px;
 
-  padding:15px;
+  padding:15px 30px;
 
-  width:175%;
+  width:300%;
 }
 
 .child-menu .parent-element .menu-toggle {
@@ -335,7 +335,7 @@ html,body {
 }
 
 .menu-toggle {
-  margin-inline-end:10px;
+  padding-inline-end:10px;
 
   position:relative;
 }
@@ -349,6 +349,7 @@ html,body {
 
   position:absolute;
   top:0;
+  left:100%;
 }
 
 .menu-toggle:not(.get-back).active::after {
@@ -451,6 +452,9 @@ html,body {
   grid-area: IMAGE;
   
   margin:5px 10px 5px 5px;
+
+  height:200px;
+  object-fit: cover;
 }
 
 .cart-grid-field .cart-product-brand {
@@ -468,14 +472,17 @@ html,body {
 @media(max-width:768px) {
 
   #main-menu {
-    position:absolute;
-    top:100%;
+    position:fixed;
+    top:0;
     left:-100%;
+
+    padding-top:75px;
+    margin-top:90px;
 
     z-index:9;
 
     width:100%;
-    height:calc(100vh - 100%);
+    height:calc(100vh - 75px);
 
     background:var(--secondary-color);
   

@@ -20,19 +20,22 @@
       <div id = 'main-menu'>
         <ul class = 'd-md-inline-flex m-0 p-0 list-unstyled'>
           <li class = 'parent-element px-3' data-child = "shop-all-menu">
-            <a href = 'pages/collection.html' class = 'bg-transparent border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>
-              Shop All
-            </a>
+            <button class = 'bg-transparent pr-2 border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>Shop</button>
             <ul class = 'child-menu' id = 'shop-all-menu'>
               <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i> Shop All</li>
+              <li>
+                <a href="pages/collection.html" class = 'text-primary'>
+                  Shop All
+                </a>
+              </li>
               <li class = 'parent-element'>
                 <a href = '#' class = 'menu-toggle text-primary' data-toggle = 'featured-products' id = 'featured-products-toggle'>
                   Shop by Category
                 </a>
                 <ul class = 'child-menu' id = 'featured-products'>
                   <li class = 'menu-toggle get-back d-block d-md-none' data-original = "featured-products-toggle" data-toggle='featured-products'><i class = 'bi bi-arrow-left mr-4'></i> Featured</li>
-                  <li><a href = 'pages/category.html?category=Laundry'>Laundry</a></li>
-                  <li><a href = 'pages/category.html?category=Kitchen'>Kitchen</a></li>
+                  <li><a class = 'text-primary' href = 'pages/category.html?category=Laundry'>Laundry</a></li>
+                  <li><a class = 'text-primary' href = 'pages/category.html?category=Kitchen'>Kitchen</a></li>
                 </ul>
               </li>
             </ul>
@@ -45,7 +48,7 @@
           </li>
         </ul>
         <footer class = 'd-block d-md-none p-5 position-absolute bottom-0 w-100'>
-          <a href = '#login' class = 'text-primary' style = 'font-size:18px'>
+          <a href = 'pages/login.html' class = 'text-primary' style = 'font-size:18px'>
             <i class = 'bi bi-person'></i>
             Log in
           </a>
