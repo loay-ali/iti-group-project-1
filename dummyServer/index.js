@@ -80,7 +80,7 @@ server.get('/',(req,res) => {
 //Search Products
 server.get('/search/:query',(req,res) => {
 	const searchQuery = req.params['query'];
-	if( ! /[a-z]{3,20}/i.test(searchQuery) )
+	if( !/[a-z]{1,20}/i.test(searchQuery) )
 		res.sendStatus(400);
 
 	const resultData = data['products'].filter(product => product.name.indexOf(searchQuery) != -1);
@@ -90,9 +90,6 @@ server.get('/search/:query',(req,res) => {
 		data: resultData
 	}));
 });
-
-
-// =======================================================================
 
 //Single Product
 server.get('/:productId',(req,res) => {
@@ -107,7 +104,6 @@ server.get('/:productId',(req,res) => {
 	}
 });
 
-// ========================================================================
 server.listen(8000,() => {
   console.log('Server running on http://localhost:8000');
 });
