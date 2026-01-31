@@ -157,6 +157,10 @@ main .card .card-title {
 	margin-inline:5px;
 }
 
+.products-carousel .carousel-container > a {
+	display:block;
+}
+
 .products-carousel .carousel-movement {
 	position:absolute;
 

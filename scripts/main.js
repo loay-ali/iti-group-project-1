@@ -48,6 +48,7 @@ function getCart() {
 	return data == null ? []:data;
 }
 
+//Add, Remove & Change Cart Quantity
 document.body.addEventListener('click',event => {
 	if( event.target.classList.contains('add-to-cart') ) {
 		const cart = getCart();
@@ -55,6 +56,8 @@ document.body.addEventListener('click',event => {
 		cart[productId] = ~~(cart[productId]) + 1;
 	
 		localStorage.setItem('cart',JSON.stringify(cart));
+
+		event.preventDefault();
 	}
 	if( event.target.classList.contains('remove-from-cart') || event.target.classList.contains('bi-trash') ) {
 		const cart = getCart();
@@ -210,4 +213,70 @@ const decreaseQuantity = function(event) {
 	if( value <= 1 ) return;
 
 	quantity.value = Number(quantity.value) - 1;
+}
+
+//Fill Products In Slider
+function fillSlider(data,section) {
+
+	const slider = section.getElementsByClassName('products-carousel')[0];
+	const container = slider.getElementsByClassName('carousel-container')[0];
+
+	slider.dataset['current'] = 0;
+	slider.dataset['count'] = data.length;
+
+	container.innerHTML = '';
+
+	for(let product of data) {
+
+		container.innerHTML += `<a class="product-card h-100" href = 'pages/single-product.html?id=${product.id}'>
+              <img
+                src="${product.image}"
+                class="product-img"
+                alt="product"
+              />
+
+              <div class="product-body">
+                <h6 class="product-title">${product.name}</h6>
+                <p class="product-brand">${product.brand}</p>
+                <p class="product-price">$${product.price} USD</p>
+              </div>
+
+              <button class="btn product-btn w-100 add-to-cart" data-id = "${product.id}">Add to cart</button>
+            </a>`;
+	}
+}
+
+//Ajax Get Products
+function getCategoryProducts(category,callback,section) {
+	let agent = new XMLHttpRequest();
+
+	agent.open('GET','http://localhost:8000?category='+ category);
+	agent.send();
+
+	agent.addEventListener('readystatechange',() => {
+		if( agent.readyState === 4 )
+			callback(JSON.parse(agent.response),section);
+	});
+}
+
+function getAllProducts(callback,section) {
+	let agent = new XMLHttpRequest();
+	agent.open("GET","http://localhost:8000");
+	agent.send();
+
+	//Start Loading
+	if( section != null ) {
+		section.classList.add('is-loading');
+	}
+
+	agent.addEventListener('readystatechange',() => {
+		if( agent.readyState === 4 ) {
+			//Stop Loading
+		if( section != null ) {
+			section.classList.remove('is-loading');
+		}
+
+			callback(JSON.parse(agent.response),section);
+		}
+	});
 }

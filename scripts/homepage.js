@@ -81,7 +81,7 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 		anchorPosition = undefined;
 		if( diff >= 100 ) {
 			changeSlide(container[0].parentElement,1);
-		}else if( diff <= 100 ) {
+		}else if( diff <= -100 ) {
 			changeSlide(container[0].parentElement,-1);
 		}
 	};
@@ -105,3 +105,16 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 		changeSlide(slide,1);
 	});
 });
+
+//Load Products
+getAllProducts(function(data,section) {
+	fillSlider(data.data,section)
+},document.getElementById('best-sellers'));
+
+//Laundry Category Only
+getCategoryProducts(
+	'Laundry',
+	function(data,section){
+		fillSlider(data.data,section);
+	},
+document.getElementById('laundry-category'));
