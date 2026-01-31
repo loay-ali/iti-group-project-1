@@ -19,7 +19,7 @@ server.get('/',(req,res) => {
 		}
 	}
 })
-
+// =======================================================================
 //Single Product
 server.get('/:productId',(req,res) => {
 	const productId = Number(req.params['productId']);
@@ -33,4 +33,20 @@ server.get('/:productId',(req,res) => {
 	}
 });
 
-server.listen(8000,() => {});
+// =========================================================================
+
+server.get('/search', (req, res) => {
+  const q = req.query.q?.toLowerCase() || '';
+
+  if (!q) return res.json({ count: 0, data: [] });
+
+  const results = data.products.filter(product =>
+    product.name.toLowerCase().includes(q)
+  );
+
+  res.json({ count: results.length, data: results.slice(0, 6) });
+});
+// ========================================================================
+server.listen(8000,() => {
+  console.log('Server running on http://localhost:8000');
+});
