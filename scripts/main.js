@@ -53,7 +53,7 @@ document.body.addEventListener('click',event => {
 	if( event.target.classList.contains('add-to-cart') ) {
 		const cart = getCart();
 		const productId = event.target.dataset['id'];
-		cart[productId] = ~~(cart[productId]) + 1;
+		cart[productId] = ~~(cart[productId]) + (event.target.dataset['amount'] == undefined ? 1:Math.abs(event.target.dataset['amount']));
 	
 		localStorage.setItem('cart',JSON.stringify(cart));
 
@@ -106,6 +106,7 @@ function fillCart(data) {
 		const productData = data.filter(prod => prod.id == product)[0];
 		if( productData == undefined ) continue;
 		const tr = document.createElement('tr');
+		tr.id = 'cart-item-'+ productData.id;
 
 		const dataField = document.createElement('td');
 		dataField.classList = 'cart-grid-field';
@@ -132,9 +133,9 @@ function fillCart(data) {
 		quantity.className = 'quantity-wrapper';
 
 		const increaseQuantityButton = document.createElement('button');
-		increaseQuantityButton.className = 'qty-btn';
-		increaseQuantityButton.id = 'decrease';
+		increaseQuantityButton.className = 'qty-btn decrease';
 		increaseQuantityButton.innerText = '-';
+		increaseQuantityButton.dataset['id'] = productData.id;
 
 		const quantityInput = document.createElement('input');
 		quantityInput.type = 'number';
@@ -142,9 +143,9 @@ function fillCart(data) {
 		quantityInput.id = 'quantity';
 
 		const decreaseQuantityButton = document.createElement('button');
-		decreaseQuantityButton.className = 'qty-btn';
-		decreaseQuantityButton.id = 'increase';
+		decreaseQuantityButton.className = 'qty-btn increase';
 		decreaseQuantityButton.innerText = '+';
+		decreaseQuantityButton.dataset['id'] = productData.id;
 
 		quantity.appendChild(increaseQuantityButton);
 		quantity.appendChild(quantityInput);
@@ -205,6 +206,7 @@ window.addEventListener('scroll',() => {
 const increaseQuantity = function(event) {
 	const quantity = event.target.previousElementSibling;
 	quantity.value = Number(quantity.value) + 1;
+	return quantity.value;
 }
 
 const decreaseQuantity = function(event) {
@@ -213,7 +215,31 @@ const decreaseQuantity = function(event) {
 	if( value <= 1 ) return;
 
 	quantity.value = Number(quantity.value) - 1;
+	return quantity.value;
 }
+
+//Quantity In Mini Cart
+window.addEventListener('click',event => {
+	if( event.target.classList.contains('qty-btn') ) {
+		const cart = getCart();
+		const productId = event.target.dataset['id'];
+
+		if( event.target.classList.contains('increase') ) {
+			increaseQuantity(event);
+			cart[productId]++;
+		}else {
+			decreaseQuantity(event);
+			cart[productId]--;
+
+			if( cart[productId] <= 0 ) {
+				delete cart[productId];
+				document.getElementById('cart-item-'+ productId).remove();
+			}
+		}
+
+		localStorage.setItem('cart',JSON.stringify(cart));
+	}
+});
 
 //Fill Products In Slider
 function fillSlider(data,section) {

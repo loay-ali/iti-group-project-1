@@ -19,28 +19,33 @@ main.innerHTML = `
       <p>Price: $${product.price.toFixed(2)} ${product.currency}</p>
       <p>${product.description}</p>
 
-      <button class="btn btn-primary mb-3"  id="mainBtn">Add to Cart</button>
+      <button class="btn btn-primary mb-3 add-to-cart" data-id = "${product.id}"  id="mainBtn">Add to Cart</button>
 
       <div class="quantity-wrapper">
-        <button class="qty-btn" id="decrease">−</button>
+        <button class="qty-btn" id="decrease-single-product">−</button>
         <input type = "number" value = "1" id="quantity" />
-        <button class="qty-btn" id="increase">+</button>
+        <button class="qty-btn" id="increase-single-product">+</button>
       </div>
     </div>
   </div>
 `;
-
-    document.getElementById('increase').addEventListener('click',event => {
-      increaseQuantity(event);
+    document.getElementById('increase-single-product').addEventListener('click',event => {
+      const newAmount = increaseQuantity(event);
+      updateAddToCartAmount(newAmount);
     });
 
-    document.getElementById('decrease').addEventListener('click',event => {
-      decreaseQuantity(event);
+    document.getElementById('decrease-single-product').addEventListener('click',event => {
+      const newAmount = decreaseQuantity(event);
+      updateAddToCartAmount(newAmount);
     });
+
+    function updateAddToCartAmount(newAmount) {
+      const addToCartButton = document.getElementById('mainBtn');
+      addToCartButton.dataset['amount'] = newAmount;
+    }
 
   })
   .catch(err => {
     main.innerHTML = `<p class="text-danger">Failed to load product</p>`;
     console.error(err);
   });
-
