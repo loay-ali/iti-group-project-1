@@ -54,7 +54,18 @@ document.body.addEventListener('click',event => {
 		const productId = event.target.dataset['id'];
 		cart[productId] = ~~(cart[productId]) + 1;
 	
-	localStorage.setItem('cart',JSON.stringify(cart));
+		localStorage.setItem('cart',JSON.stringify(cart));
+	}
+	if( event.target.classList.contains('remove-from-cart') || event.target.classList.contains('bi-trash') ) {
+		const cart = getCart();
+		const productId = event.target.nodeName == 'BUTTON' ? event.target.dataset['id']:event.target.parentElement.dataset['id'];
+		delete cart[productId];
+
+		console.log(productId);
+		
+		localStorage.setItem('cart',JSON.stringify(cart));
+
+		fillCart(cart);
 	}
 });
 
@@ -66,47 +77,87 @@ cartAjaxAgent.send();
 const cartCounter = document.getElementById('open-cart-panel');
 
 const emptyCartCond = document.getElementById('empty-cart');
-const cartList = document.getElementById('cart-products-table');
-const cartTotals = document.getElementById('cart-totals');
+const cartTable = document.getElementById('cart-products-table');
+const cartList = cartTable.getElementsByTagName('tbody')[0];
+const cartTotals = document.getElementById('cart-totals-summary');
 
 function fillCart(data) {
 	const currentCart = getCart();
 
 	if( Object.keys(currentCart).length == 0 ) {
-		emptyCartCond.style.display = 'block';
-		cartList.style.display = 'none';
+		emptyCartCond.classList.remove('d-none');
+		emptyCartCond.classList.add('d-flex');
+		cartTable.style.display = 'none';
 	
 		return;
 	}
+
+	emptyCartCond.classList.remove('d-flex');
+	emptyCartCond.classList.add('d-none');
+	cartTable.style.display = 'block';
 
 	let totaCart = 0;
 	cartList.innerHTML = '';
 
 	for( let product in currentCart ) {
 		const productData = data.filter(prod => prod.id == product)[0];
+		if( productData == undefined ) continue;
 		const tr = document.createElement('tr');
 
 		const dataField = document.createElement('td');
-		
+		dataField.classList = 'cart-grid-field';
+
 		const img = document.createElement('img');
 		img.src = productData.image;
 		img.alt = productData.name + " Image";
-		img.width = 200;
+		img.width = 100;
 
 		const brand = document.createElement('small');
 		brand.innerText = productData.brand;
-		brand.className = 'text-primary';
+		brand.className = 'text-primary cart-product-brand';
 
-		const title = document.createElement('span');
+		const title = document.createElement('a');
 		title.innerText = productData.name;
+		title.className = 'cart-product-name';
+		title.href = 'pages/single-product.html?id='+ productData.id;
 		
 		const price = document.createElement('span');
 		price.innerText = "$"+ productData.price;
+		price.className = 'cart-product-price';
+
+		const quantity = document.createElement('div');
+		quantity.className = 'quantity-wrapper';
+
+		const increaseQuantityButton = document.createElement('button');
+		increaseQuantityButton.className = 'qty-btn';
+		increaseQuantityButton.id = 'decrease';
+		increaseQuantityButton.innerText = '-';
+
+		const quantityInput = document.createElement('input');
+		quantityInput.type = 'number';
+		quantityInput.value = currentCart[productData.id];
+		quantityInput.id = 'quantity';
+
+		const decreaseQuantityButton = document.createElement('button');
+		decreaseQuantityButton.className = 'qty-btn';
+		decreaseQuantityButton.id = 'increase';
+		decreaseQuantityButton.innerText = '+';
+
+		quantity.appendChild(increaseQuantityButton);
+		quantity.appendChild(quantityInput);
+		quantity.appendChild(decreaseQuantityButton);
+
+		const remove = document.createElement('button');
+		remove.dataset['id'] = productData.id;
+		remove.className = 'remove-from-cart';
+		remove.innerHTML = "<i class = 'bi bi-trash'></i>";
 
 		dataField.appendChild(img);
 		dataField.appendChild(brand);
 		dataField.appendChild(title);
 		dataField.appendChild(price);
+		dataField.appendChild(quantity);
+		dataField.appendChild(remove);
 
 		tr.appendChild(dataField);
 
@@ -131,3 +182,32 @@ cartAjaxAgent.addEventListener('readystatechange',() => {
 
 //Initial Cart Counter
 window.addEventListener('load',updateCartCounter);
+
+//Header Show on Scroll Down
+let lastScrollArea = 0;
+const headerElement = document.getElementById('main-site-header');
+window.addEventListener('scroll',() => {
+	const currentScrollArea = window.scrollY;
+	if( currentScrollArea >= window.innerHeight && currentScrollArea > lastScrollArea ) {
+		headerElement.style.top = "0";
+		headerElement.style.position = 'sticky';
+	}else if ( lastScrollArea > currentScrollArea ) {
+		headerElement.style.top = "-100px";
+		if( currentScrollArea < window.innerHeight ) headerElement.style.position = 'static';	
+	}
+	lastScrollArea = currentScrollArea;
+});
+
+//Quantity
+const increaseQuantity = function(event) {
+	const quantity = event.target.previousElementSibling;
+	quantity.value = Number(quantity.value) + 1;
+}
+
+const decreaseQuantity = function(event) {
+	const quantity = event.target.nextElementSibling;
+	const value = Number(quantity.value);
+	if( value <= 1 ) return;
+
+	quantity.value = Number(quantity.value) - 1;
+}

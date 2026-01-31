@@ -60,6 +60,10 @@
 	font-family: "unitled-sans";
 }
 
+body {
+  display:contents;
+}
+
 html,body {
   overflow-x:hidden;
 }
@@ -205,11 +209,15 @@ html,body {
   padding-bottom:0;
 }
 
-
-
 /* Header */
-body > header {
-  position:relative;
+#main-site-header {
+  position:static;
+  transition:all 0.2s ease;
+  top:-100px;
+
+  z-index:999;
+
+  box-shadow:0 0 10px #000;
 }
 
 #main-menu {
@@ -368,6 +376,8 @@ body > header {
   height:100vh;
   width:350px;
 
+  overflow-y:auto;
+
   top:0;
   inset-inline-end:-350px;
 
@@ -396,6 +406,30 @@ body > header {
 
 #cart-panel.active .layout {
   display: block;
+}
+
+.cart-grid-field {
+  display:grid;
+
+  grid-template-areas: "IMAGE BRAND" "IMAGE NAME" "IMAGE PRICE";
+}
+
+.cart-grid-field img {
+  grid-area: IMAGE;
+  
+  margin:5px 10px 5px 5px;
+}
+
+.cart-grid-field .cart-product-brand {
+  grid-area: BRAND;
+}
+
+.cart-grid-field .cart-product-name {
+  grid-area: NAME;
+}
+
+.cart-grid-field .cart-product-price {
+  grid-area: PRICE;
 }
 
 @media(max-width:768px) {
@@ -499,4 +533,72 @@ body > footer ul{
   100% {
     transform:scale(1);
   }
+}
+
+/* Quantity */
+.quantity-section {
+  margin-top: 20px;
+}
+
+.quantity-label {
+  font-size: 16px;
+  color: #2f3b2d;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 170px;
+  height: 50px;
+
+  border: 3px solid #1d3a24;
+  border-radius: 18px;
+  padding: 0 14px;
+
+  background-color: #f4f6ee;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  font-weight: 500;
+  color: #1d3a24;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:active {
+  transform: scale(0.9);
+}
+
+#quantity {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d3a24;
+  min-width: 30px;
+  text-align: center;
+
+  border:none;
+  background:none;
+
+  appearance: textfield;
+
+  margin:5px;
+}
+
+.remove-from-cart {
+  border:none;
+
+  background:none;
 }
