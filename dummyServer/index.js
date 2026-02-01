@@ -44,7 +44,7 @@ server.post('/register',async (req,res) => {
 			'status': "EXISTS"
 		}));
 	}else {
-		
+
 		users[Object.keys(users).length] = {
 			name: req.body.name,
 			username: req.body.username,
