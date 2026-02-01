@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.style.cursor = 'pointer';
             li.style.padding = '5px 10px';
             li.onclick = () => {
-              window.location.href = `single-product.html?id=${product.id}`;
+              window.location.href = `${is_home ? 'pages/':''}single-product.html?id=${product.id}`;
             };
             list.appendChild(li);
           });

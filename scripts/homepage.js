@@ -1,3 +1,5 @@
+var is_home = true; //For Search Script
+
 //On-Scroll Effect
 const elements = Array.from(document.getElementsByClassName('show-on-scroll'));
 function onScroll(event) {
@@ -55,7 +57,7 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 	//Drag & Slide Effect On Slider + Touching
 	var anchorPosition = undefined;
 	const eventDownFunc = downEvent => {
-		anchorPosition = downEvent.__proto__.constructor == TouchEvent ? downEvent.changedTouches[0].clientX:downEvent.clientX;
+		anchorPosition = downEvent.__proto__.constructor.name == 'TouchEvent' ? downEvent.changedTouches[0].clientX:downEvent.clientX;
 	};
 
 	const eventMoveFunc = moveEvent => {
@@ -63,7 +65,7 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 
 		let currentPosition = 0;
 		
-		if( moveEvent.__proto__.constructor === TouchEvent ) currentPosition = moveEvent.changedTouches[0].clientX;
+		if( moveEvent.__proto__.constructor.name === 'TouchEvent' ) currentPosition = moveEvent.changedTouches[0].clientX;
 		else currentPosition = moveEvent.clientX;
 
 		if( Math.abs(anchorPosition - currentPosition) <= 150 ) {
@@ -75,7 +77,7 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 
 		container[0].style.marginLeft = '0px';
 		let diff = 0;
-		if( upEvent.__proto__.constructor === TouchEvent ) diff = anchorPosition - upEvent.changedTouches[0].clientX;
+		if( upEvent.__proto__.constructor.name === 'TouchEvent' ) diff = anchorPosition - upEvent.changedTouches[0].clientX;
 		else diff = anchorPosition - upEvent.clientX;
 		
 		anchorPosition = undefined;

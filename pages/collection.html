@@ -5,7 +5,6 @@
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width,initial-scale=1.0' />
   <link rel="stylesheet" href="../styling/collection.css">
-  <link rel="stylesheet" href="../styling/search.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
@@ -13,7 +12,7 @@
   <link rel="stylesheet" href="../styling/search.css" />
 </head>
 
-<body>
+<body id = 'collection-page'>
   <section id='above-header' class='text-center p-1 bg-primary'>
     <a class='text-white'>Enjoy free domestic shipping on orders $65+</a>
   </section>
@@ -26,7 +25,7 @@
           <li class = 'parent-element px-3' data-child = "shop-all-menu">
             <button class = 'bg-transparent pr-2 border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>Shop</button>
             <ul class = 'child-menu' id = 'shop-all-menu'>
-              <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i> Shop All</li>
+              <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i>Shop</li>
               <li>
                 <a href="collection.html" class = 'text-primary'>
                   Shop All
@@ -40,6 +39,8 @@
                   <li class = 'menu-toggle get-back d-block d-md-none' data-original = "featured-products-toggle" data-toggle='featured-products'><i class = 'bi bi-arrow-left mr-4'></i> Featured</li>
                   <li><a class = 'text-primary' href = 'category.html?category=Laundry'>Laundry</a></li>
                   <li><a class = 'text-primary' href = 'category.html?category=Kitchen'>Kitchen</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Bathroom'>Bathroom</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Bedroom'>Bedroom</a></li>
                 </ul>
               </li>
             </ul>

@@ -37,30 +37,37 @@ const updateCartCounter = () => cartCounter.dataset['count'] = Object.keys(getCa
 function getCart() {
 	const data = JSON.parse(localStorage.getItem('cart'));
 
-	return data == null ? []:data;
+	return data == null ? {}:data;
 }
 
 //Add, Remove & Change Cart Quantity
 document.body.addEventListener('click',event => {
 	if( event.target.classList.contains('add-to-cart') ) {
 		const cart = getCart();
-		const productId = event.target.dataset['id'];
-		cart[productId] = ~~(cart[productId]) + (event.target.dataset['amount'] == undefined ? 1:Math.abs(event.target.dataset['amount']));
-	
+		const productId = Number(event.target.dataset['id']);
+		
+		if( cart[productId] == undefined ) cart[productId] = 0;
+
+		cart[productId] += (event.target.dataset['amount'] == undefined ? 1:Math.abs(event.target.dataset['amount']));;
+
 		localStorage.setItem('cart',JSON.stringify(cart));
 
 		event.preventDefault();
+
+		getSingleProduct(productId,data => {
+			insertProductIntoCart(data);
+		});
+
+		cartPanel.classList.add('active');
 	}
 	if( event.target.classList.contains('remove-from-cart') || event.target.classList.contains('bi-trash') ) {
 		const cart = getCart();
 		const productId = event.target.nodeName == 'BUTTON' ? event.target.dataset['id']:event.target.parentElement.dataset['id'];
 		delete cart[productId];
-
-		console.log(productId);
 		
 		localStorage.setItem('cart',JSON.stringify(cart));
 
-		fillCart(cart);
+		document.getElementById('cart-item-'+ productId).remove();
 	}
 });
 
@@ -88,37 +95,48 @@ function fillCart(data) {
 	}
 
 	emptyCartCond.classList.replace('d-flex','d-none');
-	console.log(emptyCartCond.classList);
 	cartTable.style.display = 'block';
 
-	let totaCart = 0;
+	let totalCart = 0;
 	cartList.innerHTML = '';
 
 	for( let product in currentCart ) {
 		const productData = data.filter(prod => prod.id == product)[0];
 		if( productData == undefined ) continue;
+
+		totalCart += insertProductIntoCart(productData,currentCart);
+	}
+
+	cartTotals.innerText = '$'+ totalCart + ' USD';
+}
+
+function insertProductIntoCart(data,currentCart = undefined) {
+		if( currentCart == undefined ) {
+			currentCart = getCart();
+		}
+
 		const tr = document.createElement('tr');
-		tr.id = 'cart-item-'+ productData.id;
+		tr.id = 'cart-item-'+ data.id;
 
 		const dataField = document.createElement('td');
 		dataField.classList = 'cart-grid-field';
 
 		const img = document.createElement('img');
-		img.src = productData.image;
-		img.alt = productData.name + " Image";
+		img.src = data.image;
+		img.alt = data.name + " Image";
 		img.width = 100;
 
 		const brand = document.createElement('small');
-		brand.innerText = productData.brand;
+		brand.innerText = data.brand;
 		brand.className = 'text-primary cart-product-brand';
 
 		const title = document.createElement('a');
-		title.innerText = productData.name;
+		title.innerText = data.name;
 		title.className = 'cart-product-name';
-		title.href = 'pages/single-product.html?id='+ productData.id;
+		title.href = 'pages/single-product.html?id='+ data.id;
 		
 		const price = document.createElement('span');
-		price.innerText = "$"+ productData.price;
+		price.innerText = "$"+ data.price;
 		price.className = 'cart-product-price';
 
 		const quantity = document.createElement('div');
@@ -127,24 +145,24 @@ function fillCart(data) {
 		const increaseQuantityButton = document.createElement('button');
 		increaseQuantityButton.className = 'qty-btn decrease';
 		increaseQuantityButton.innerText = '-';
-		increaseQuantityButton.dataset['id'] = productData.id;
+		increaseQuantityButton.dataset['id'] = data.id;
 
 		const quantityInput = document.createElement('input');
 		quantityInput.type = 'number';
-		quantityInput.value = currentCart[productData.id];
+		quantityInput.value = currentCart[data.id];
 		quantityInput.id = 'quantity';
 
 		const decreaseQuantityButton = document.createElement('button');
 		decreaseQuantityButton.className = 'qty-btn increase';
 		decreaseQuantityButton.innerText = '+';
-		decreaseQuantityButton.dataset['id'] = productData.id;
+		decreaseQuantityButton.dataset['id'] = data.id;
 
 		quantity.appendChild(increaseQuantityButton);
 		quantity.appendChild(quantityInput);
 		quantity.appendChild(decreaseQuantityButton);
 
 		const remove = document.createElement('button');
-		remove.dataset['id'] = productData.id;
+		remove.dataset['id'] = data.id;
 		remove.className = 'remove-from-cart';
 		remove.innerHTML = "<i class = 'bi bi-trash'></i>";
 
@@ -158,16 +176,13 @@ function fillCart(data) {
 		tr.appendChild(dataField);
 
 		const total = document.createElement('td');
-		total.innerText = "$"+ (productData.price * currentCart[product]);
+		total.innerText = "$"+ (data.price * currentCart[data.id]);
 
 		tr.appendChild(total);
 
-		totaCart += (productData.price * currentCart[product]);
-
 		cartList.appendChild(tr);
-	}
 
-	cartTotals.innerText = '$'+ totaCart + ' USD';
+		return (data.price * currentCart[data.id]);
 }
 
 cartAjaxAgent.addEventListener('readystatechange',() => {
@@ -297,6 +312,19 @@ function insertProducts(data,container,maximum) {
 }
 
 //Ajax Get Products
+function getSingleProduct(id,cb) {
+	const agent = new XMLHttpRequest();
+
+	agent.open('GET','http://localhost:8000/'+ id);
+	agent.send();
+
+	agent.addEventListener('readystatechange',() => {
+		if( agent.readyState === 4 ) {
+			cb(JSON.parse(agent.response));
+		}
+	});
+}
+
 function getCategoryProducts(category,callback,section) {
 	let agent = new XMLHttpRequest();
 

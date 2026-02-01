@@ -22,7 +22,9 @@
 
 }
 
-
+.product-grid-item:hover {
+  text-decoration: none;
+}
 
 .product-grid {
   display: flex;
