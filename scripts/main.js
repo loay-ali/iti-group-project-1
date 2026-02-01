@@ -263,6 +263,8 @@ function fillSlider(data,section) {
 
 	container.innerHTML = '';
 
+	const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
 	for(let product of data) {
 
 		container.innerHTML += `<a class="text-decoration-none product-card h-100" href = 'pages/single-product.html?id=${product.id}'>
@@ -271,6 +273,8 @@ function fillSlider(data,section) {
                 class="product-img"
                 alt="product"
               />
+
+							<span data-id = '${product.id}' class = 'heart' style='${wishlist.find(item => item == product.id) ? "color:#611111":"color:#4c4848"}'><i class = 'bi ${wishlist.find(item => item == product.id) ? "bi-heart-fill":"bi-heart"}'></i></span>
 
               <div class="product-body">
                 <h6 class="product-title">${product.name}</h6>

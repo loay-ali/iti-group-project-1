@@ -4,15 +4,39 @@
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const wishlistCounter = document.getElementById("wishlist-cont");
 
+window.addEventListener("click", e => {
+  if( (e.target.id != 'wishlist-cont' && e.target.classList.contains('wishlist-main-counter') == false) && (e.target.classList.contains('wishlist') || e.target.classList.contains('bi')) ) {
+
+    e.stopPropagation();
+    e.preventDefault();
+
+    const prdId = (e.target.classList.contains('bi') ? e.target.parentElement.dataset['id']:e.target.dataset['id']);
+    const mainElement = (e.target.classList.contains('bi') ? e.target.parentElement:e.target);
+    const icon = (e.target.classList.contains('bi') ? e.target:e.target.getElementsByClassName('bi')[0]);
+
+    if (wishlist.includes(prdId)) {
+      wishlist = wishlist.filter(id => id !== prdId);
+      icon.classList.replace("bi-heart-fill", "bi-heart");
+      mainElement.style.color = "#4c4848";
+    } else {
+      wishlist.push(prdId);
+      icon.classList.replace("bi-heart", "bi-heart-fill");
+      mainElement.style.color = "#611111";
+    }
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateWishlistCount();
+  }
+});
+
 function updateWishlistCount() {
-  if (wishlistCounter) wishlistCounter.innerText = wishlist.length;
+  if (wishlistCounter) wishlistCounter.dataset['count'] = wishlist.length;
 }
 updateWishlistCount();
 
 // ===========================================
 // Product constructor
 // ===========================================
-function Product(data) {
+/*function Product(data) {
   this.id = data.id;
   this.name = data.name;
   this.brand = data.brand;
@@ -51,7 +75,7 @@ function Product(data) {
 // ===========================================
 // Add hearts to each product card
 // ===========================================
-function addHearts() {
+function addHearts() {  
   document.querySelectorAll(".product-card").forEach(card => {
     if (card.querySelector(".heart")) return; 
     const heart = document.createElement("span");
@@ -70,22 +94,6 @@ function addHearts() {
     } else {
       heart.style.color = "#4c4848";
     }
-
-    heart.addEventListener("click", e => {
-      e.stopPropagation();
-      e.preventDefault();
-      if (wishlist.includes(prdId)) {
-        wishlist = wishlist.filter(id => id !== prdId);
-        icon.classList.replace("fa-solid", "fa-regular");
-        heart.style.color = "#4c4848";
-      } else {
-        wishlist.push(prdId);
-        icon.classList.replace("fa-regular", "fa-solid");
-        heart.style.color = " #611111";
-      }
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      updateWishlistCount();
-    });
   });
 }
 
@@ -143,3 +151,4 @@ fetch("http://localhost:8000")
     console.error("Error fetching products:", err);
     container.innerHTML = "<p> error in adding wishlist </p>";
   });
+*/

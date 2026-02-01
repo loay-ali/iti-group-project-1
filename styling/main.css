@@ -323,11 +323,13 @@ html,body {
   font-size:21px;
 }
 
-#open-cart-panel {
+#open-cart-panel,
+#wishlist-cont {
   position:relative;
 }
 
-#open-cart-panel:not([data-count="0"])::after {
+#open-cart-panel:not([data-count="0"])::after,
+#wishlist-cont:not([data-count="0"])::after {
   font-size:12px;
 
   content: attr(data-count);
@@ -347,6 +349,10 @@ html,body {
   position:absolute;
   top:calc(100% - 15px);
   left:calc(100% - 10px);
+}
+
+#wishlist-cont:not([data-count="0"])::after {
+  top:calc(100% - 10px);
 }
 
 .parent-element {
@@ -434,7 +440,7 @@ html,body {
 
   transition:inset 0.3s ease;
 
-  z-index: 9;
+  z-index: 99;
 
   background: var(--secondary-color);
 }

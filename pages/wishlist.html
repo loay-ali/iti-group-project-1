@@ -1,25 +1,18 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link rel="stylesheet" href="../styling/main.css" />
-    <link rel="stylesheet" href="../styling/search.css" />
-    <link rel="stylesheet" href="../styling/login.css" />
+    <title>Free Package Shop</title>
+    <meta charset = 'utf-8' />
+    <meta name = 'viewport' content = 'width=device-width,initial-scale=1.0' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel = 'stylesheet' href = '../styling/main.css' />
+    <link rel="stylesheet" href="../styling/search.css">
+    <link rel="stylesheet" href="../styling/wishlist.css" />
+    <link rel = 'stylesheet' href = '../styling/single-wishlist.css' />
   </head>
   <body>
-     <section id = 'above-header' class = 'text-center p-1 bg-primary'>
+    <section id = 'above-header' class = 'text-center p-1 bg-primary'>
       <a class = 'text-white'>Enjoy free domestic shipping on orders $65+</a>
     </section>
     <header class = 'd-flex align-items-center justify-content-between bg-secondary p-4' id = 'main-site-header'>
@@ -121,6 +114,11 @@
           <i class='bi bi-bag'></i>
         </button>
       </li>
+      <li class='mx-2'>
+        <a id='wishlist-cont' href = 'wishlist.html' data-count="0" class = 'bg-transparent border-0 text-primary'>
+          <i class = 'bi bi-heart wishlist-main-counter'></i>
+        </a>
+      </li>
     </ul>
 
       <section id = 'cart-panel' class = 'p-2'>
@@ -161,37 +159,29 @@
       </section>
     </header>
 
-    <section class="hero">
-      <div class="overlay" aria-hidden="true"></div>
-      <div class="login-card" role="main" aria-labelledby="loginTitle">
-        <form action="./home.html">
-          <h1>Welcome Back!</h1>
-          <h2 id="loginTitle">SIGN IN</h2>
-          <input
-            id="username"
-            type="text"
-            placeholder="Enter Your Username"
-            aria-label="Email"
-            required
-          />
-          <input
-            id="password"
-            type="password"
-            placeholder="Enter Your Password"
-            aria-label="Password"
-            required
-          />
-          <button type="button" onclick="login()">Contuniue ></button>
-          <p><a href="#">Forget Password ?</a></p>
-          <p><a href="./register.html">or New Account !</a></p>
-        </form>
-      </div>
-    </section>
+    <main>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id = 'wishlist-contents'>
+
+        </tbody>
+      </table>
+
+    </main>
+
     <footer class = 'bg-primary px-3 py-5'>
       <nav class = 'd-block d-md-flex justify-content-center align-items-center'>
-        <a href = 'about-us.html' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
-        <a href = 'contact-us.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
-        <a href = 'collection.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
+        <a href = 'pages/about-us.html' class = 'd-block d-md-inline mx-2 py-2 text-white'>About Us</a>
+        <a href = 'pages/contact-us.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Contact Us</a>
+        <a href = 'pages/collection.html' class = 'mx-2 d-block d-md-inline py-2 text-white'>Shop All</a>
       </nav>
       <ul class = 'd-flex justify-content-center align-items-center px-0 py-5 list-unstyled'>
         <li>
@@ -223,19 +213,9 @@
         </li>
       </ul>
     </footer>
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/search.js"></script>
-    <script src="../scripts/wishlist.js"></script>
+  <script src = "../scripts/main.js"></script>
+  <script src="../scripts/search.js"></script>
+  <script src="../scripts/wishlist.js"></script>
+  <script src="../scripts/single-wishlist.js"></script>
   </body>
 </html>

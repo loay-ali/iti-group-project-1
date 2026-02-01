@@ -9,10 +9,13 @@ function Product(data) {
     this.hoverImage = data.hover_image_url || data.image;
     this.description = data.description || "";
 
+    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
     this.render = function () {
       return `
         <a class="product-grid-item" href = "single-product.html?id=${this.id}">
           <div class="product-card">
+        <span data-id = '${this.id}' class = 'heart' style='${wishlist.find(item => item == this.id) ? "color:#611111":"color:#4c4848"}'><i class = 'bi ${wishlist.find(item => item == this.id) ? "bi-heart-fill":"bi-heart"}'></i></span>
             <div class="product-img-wrapper">
               <img
                 src="${this.image}"
