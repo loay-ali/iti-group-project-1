@@ -20,6 +20,9 @@
 
 .taxonomy-grid img {
 	max-width:100%;
+	height:300px;
+
+	object-fit:cover;
 
 	border-radius:15px;
 	border:2px solid var(--primary-color);

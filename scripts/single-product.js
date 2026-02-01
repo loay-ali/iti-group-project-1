@@ -10,6 +10,7 @@ main.innerHTML = `
   <div class="row">
     <div class="col-md-6">
       <img src="${product.image}" alt="${product.name}" class="img-fluid">
+      <span data-id = '${product.id}' class = 'heart' style='${wishlist.find(item => item == product.id) ? "color:#611111":"color:#4c4848"}'><i class = 'bi ${wishlist.find(item => item == product.id) ? "bi-heart-fill":"bi-heart"}'></i></span>
     </div>
 
     <div class="col-md-6">

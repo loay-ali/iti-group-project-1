@@ -22,8 +22,6 @@ document.getElementById('open-cart-panel').addEventListener('click',() => {
 	cartPanel.classList.add('active');
 });
 
-console.log(document.getElementById('close-cart-panel'));
-
 const closeCart = () => {
 	cartPanel.classList.remove('active');
 };

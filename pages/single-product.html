@@ -9,6 +9,7 @@
     <link rel = 'stylesheet' href = '../styling/main.css' />
     <link rel="stylesheet" href="../styling/search.css" />
     <link rel="stylesheet" href="../styling/single-product.css">
+    <link rel="stylesheet" href="../styling/wishlist.css" />
   </head>
   <body>
     <section id = 'above-header' class = 'text-center p-1 bg-primary'>
@@ -72,7 +73,7 @@
         </footer>
       </div>
 
-    <a href = '../index.html'><img src = 'images/logo.svg' width = '180' alt = "Website's Logo" /></a>
+    <a href = '../index.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
 
     <ul class='d-flex p-0 m-0 list-unstyled' id='icon-list'>
      
@@ -161,6 +162,10 @@
    <main class="container my-5" id="product-details">
     <div class="quantity-section mt-4">
   <p class="quantity-label">Quantity</p>
+
+  <span data-id = '' class = 'heart'>
+    <i class = 'bi bi-heart'></i>
+  </span>
 
   <div class="quantity-wrapper">
     <button class="qty-btn" id="decrease">−</button>

@@ -4,7 +4,6 @@ var is_home = true; //For Search Script
 const elements = Array.from(document.getElementsByClassName('show-on-scroll'));
 function onScroll(event) {
 	if( (elements[0].offsetTop - (elements[0].offsetHeight / 2)) <= (window.scrollY + (window.innerHeight / 1.5)) ) {
-		console.log(elements[0],"In View!");
 		elements[0].classList.add('show');
 		elements.shift();
 	}
@@ -43,9 +42,9 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 
 	const assignSlideProps = () => {
 		if( document.body.offsetWidth >= 768 ) {
-			slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 5);
-		}else {
 			slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 2);
+		}else {
+			slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 5);
 		}
 
 		slide.getElementsByClassName('carousel-limit')[0].innerText = slide.dataset['limit'];
@@ -92,9 +91,9 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 	container[0].addEventListener('mouseup',eventUpFunc);
 	container[0].addEventListener('mousemove',eventMoveFunc);
 
-	container[0].addEventListener('touchstart',eventDownFunc);
-	container[0].addEventListener('touchmove',eventMoveFunc);
-	container[0].addEventListener('touchend',eventUpFunc);
+	//container[0].addEventListener('touchstart',eventDownFunc);
+	//container[0].addEventListener('touchmove',eventMoveFunc);
+	//container[0].addEventListener('touchend',eventUpFunc);
 
 	window.addEventListener('resize',assignSlideProps);
 	window.addEventListener('load',assignSlideProps);
@@ -110,7 +109,17 @@ Array.from(document.getElementsByClassName('products-carousel')).forEach(slide =
 
 //Load Products
 getAllProducts(function(data,section) {
-	fillSlider(data.data,section)
+	fillSlider(data.data.slice(0,9),section);
+	const slide = section.getElementsByClassName('products-carousel')[0];
+	if( document.body.offsetWidth >= 768 ) {
+		slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 2);
+	}else {
+		slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 5);
+	}
+
+	slide.getElementsByClassName('carousel-limit')[0].innerText = slide.dataset['limit'];
+
+	slide.getElementsByClassName('carousel-container')[0].style.width = Number(slide.dataset['limit']) * 100 +'%';
 },document.getElementById('best-sellers'));
 
 //Laundry Category Only
@@ -118,5 +127,15 @@ getCategoryProducts(
 	'Laundry',
 	function(data,section){
 		fillSlider(data.data,section);
+		const slide = section.getElementsByClassName('products-carousel')[0];
+		if( document.body.offsetWidth >= 768 ) {
+			slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 2);
+		}else {
+			slide.dataset['limit'] = Math.ceil(slide.dataset['count'] / 5);
+		}
+
+		slide.getElementsByClassName('carousel-limit')[0].innerText = slide.dataset['limit'];
+
+		slide.getElementsByClassName('carousel-container')[0].style.width = Number(slide.dataset['limit']) * 100 +'%';
 	},
 document.getElementById('laundry-category'));
