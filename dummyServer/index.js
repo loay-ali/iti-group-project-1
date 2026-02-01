@@ -14,7 +14,7 @@ server.post('/login',(req,res) => {
 	if( req.body.username == undefined || req.body.password == undefined )
 		req.sendStatus(400);
 
-	const foundUser = users.find(user => user.username == req.body.username && user.password == req.body.password);
+	const foundUser = Object.values(users).find(user => user.username == req.body.username && user.password == req.body.password);
 
 	if( foundUser == undefined ) {
 		res.send(JSON.stringify({

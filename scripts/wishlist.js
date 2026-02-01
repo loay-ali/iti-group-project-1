@@ -5,7 +5,7 @@ let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const wishlistCounter = document.getElementById("wishlist-cont");
 
 window.addEventListener("click", e => {
-  if( (e.target.id != 'wishlist-cont' && e.target.classList.contains('wishlist-main-counter') == false) && (e.target.classList.contains('wishlist') || e.target.classList.contains('bi')) ) {
+  if( (e.target.id != 'wishlist-cont' && e.target.classList.contains('wishlist-main-counter') == false) && (e.target.classList.contains('wishlist') || e.target.classList.contains('bi-heart-fill') || e.target.classList.contains('bi-heart')) ) {
 
     e.stopPropagation();
     e.preventDefault();
