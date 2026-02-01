@@ -15,17 +15,6 @@ document.getElementById('toggle-main-menu').addEventListener("click",event => {
 	document.documentElement.style.overflow = document.documentElement.style.overflow == 'hidden' ? 'auto':'hidden';
 });
 
-/* Toggle Search Menu */
-const searchPanel = document.getElementById('search-panel');
-
-document.getElementById('open-search-panel').addEventListener('click',() => {
-	searchPanel.classList.add('active');
-});
-
-document.getElementById('close-search-panel').addEventListener('click',() => {
-	searchPanel.classList.remove('active');
-})
-
 /* Toggle Mini Cart */
 const cartPanel = document.getElementById('cart-panel');
 
@@ -33,8 +22,10 @@ document.getElementById('open-cart-panel').addEventListener('click',() => {
 	cartPanel.classList.add('active');
 });
 
+console.log(document.getElementById('close-cart-panel'));
+
 const closeCart = () => {
-	cartPanel.classList.remove('active')
+	cartPanel.classList.remove('active');
 };
 
 document.getElementById('close-cart-panel').addEventListener('click',closeCart);
@@ -89,15 +80,15 @@ function fillCart(data) {
 	const currentCart = getCart();
 
 	if( Object.keys(currentCart).length == 0 ) {
-		emptyCartCond.classList.remove('d-none');
-		emptyCartCond.classList.add('d-flex');
+
+		emptyCartCond.classList.replace('d-none','d-flex');
 		cartTable.style.display = 'none';
 	
 		return;
 	}
 
-	emptyCartCond.classList.remove('d-flex');
-	emptyCartCond.classList.add('d-none');
+	emptyCartCond.classList.replace('d-flex','d-none');
+	console.log(emptyCartCond.classList);
 	cartTable.style.display = 'block';
 
 	let totaCart = 0;

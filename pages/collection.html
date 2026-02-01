@@ -13,6 +13,7 @@
   <link rel='stylesheet' href='../styling/main.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <link rel="stylesheet" href="../styling/search.css" />
 </head>
 
 <body>
@@ -26,19 +27,22 @@
       <div id = 'main-menu'>
         <ul class = 'd-md-inline-flex m-0 p-0 list-unstyled'>
           <li class = 'parent-element px-3' data-child = "shop-all-menu">
-            <a href = 'collection.html' class = 'bg-transparent border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>
-              Shop All
-            </a>
+            <button class = 'bg-transparent pr-2 border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>Shop</button>
             <ul class = 'child-menu' id = 'shop-all-menu'>
               <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i> Shop All</li>
+              <li>
+                <a href="collection.html" class = 'text-primary'>
+                  Shop All
+                </a>
+              </li>
               <li class = 'parent-element'>
                 <a href = '#' class = 'menu-toggle text-primary' data-toggle = 'featured-products' id = 'featured-products-toggle'>
                   Shop by Category
                 </a>
                 <ul class = 'child-menu' id = 'featured-products'>
                   <li class = 'menu-toggle get-back d-block d-md-none' data-original = "featured-products-toggle" data-toggle='featured-products'><i class = 'bi bi-arrow-left mr-4'></i> Featured</li>
-                  <li><a href = 'category.html?category=Laundry'>Laundry</a></li>
-                  <li><a href = 'category.html?category=Kitchen'>Kitchen</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Laundry'>Laundry</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Kitchen'>Kitchen</a></li>
                 </ul>
               </li>
             </ul>
@@ -123,6 +127,10 @@
 <i class="fa-regular fa-heart" style="font-size:25px;"></i>
 <span id="wishlist-cont" style="font-size:20px;">0</span>
 
+    <a href = '../index.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
+
+    <ul class='d-flex p-0 m-0 list-unstyled' id='icon-list'>
+     
      <!-- =================================================== -->
 
        <li class='mx-2 position-relative'>
@@ -151,31 +159,16 @@
       
       
       <li class='mx-2'>
-        <a href='pages/auth.html' class='d-none d-md-block button bg-transparent border-0 text-primary'>
+        <a href='login.html' class='d-none d-md-block button bg-transparent border-0 text-primary'>
           <i class='bi bi-person' style='font-size:23px'></i>
         </a>
       </li>
       <li class='mx-2'>
-        <button id='open-cart-panel' data-count="2" class='bg-transparent border-0 text-primary'>
+        <button id='open-cart-panel' data-count="0" class='bg-transparent border-0 text-primary'>
           <i class='bi bi-bag'></i>
         </button>
       </li>
     </ul>
-
-
-    <section id='cart-panel' class='p-2'>
-
-      <header class='d-flex justify-content-between align-items-center'>
-        <h2 style='font-size:20px'>Your Cart</h2>
-        <button id='close-cart-panel' class='bg-transparent border-0' style='font-size:22px'>
-          <i class='bi bi-x'></i>
-        </button>
-      </header>
-
-      <section id='empty-cart' class='d-flex flex-column justify-content-center align-items-center p-3'>
-        <strong>Your cart is empty</strong>
-        <button class='darkGreen-btn p-2 mt-2'>Continue shopping</button>
-      </section>
 
       <section id = 'cart-panel' class = 'p-2'>
 
