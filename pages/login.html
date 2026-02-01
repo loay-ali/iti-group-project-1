@@ -15,6 +15,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="../styling/main.css" />
+    <link rel="stylesheet" href="../styling/search.css" />
     <link rel="stylesheet" href="../styling/login.css" />
   </head>
   <body>
@@ -28,19 +29,22 @@
       <div id = 'main-menu'>
         <ul class = 'd-md-inline-flex m-0 p-0 list-unstyled'>
           <li class = 'parent-element px-3' data-child = "shop-all-menu">
-            <a href = 'collection.html' class = 'bg-transparent border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>
-              Shop All
-            </a>
+            <button class = 'bg-transparent pr-2 border-0 text-primary menu-toggle' data-toggle = "shop-all-menu" id = 'open-shop-all'>Shop</button>
             <ul class = 'child-menu' id = 'shop-all-menu'>
               <li class = 'd-block d-md-none menu-toggle get-back' data-original = "open-shop-all" data-toggle='shop-all-menu'><i class = 'bi bi-arrow-left mr-4'></i> Shop All</li>
+              <li>
+                <a href="collection.html" class = 'text-primary'>
+                  Shop All
+                </a>
+              </li>
               <li class = 'parent-element'>
                 <a href = '#' class = 'menu-toggle text-primary' data-toggle = 'featured-products' id = 'featured-products-toggle'>
                   Shop by Category
                 </a>
                 <ul class = 'child-menu' id = 'featured-products'>
                   <li class = 'menu-toggle get-back d-block d-md-none' data-original = "featured-products-toggle" data-toggle='featured-products'><i class = 'bi bi-arrow-left mr-4'></i> Featured</li>
-                  <li><a href = 'category.html?category=Laundry'>Laundry</a></li>
-                  <li><a href = 'category.html?category=Kitchen'>Kitchen</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Laundry'>Laundry</a></li>
+                  <li><a class = 'text-primary' href = 'category.html?category=Kitchen'>Kitchen</a></li>
                 </ul>
               </li>
             </ul>
@@ -74,43 +78,48 @@
         </footer>
       </div>
 
-      <a href = '../index.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
+    <a href = '../index.html'><img src = '../images/logo.svg' width = '180' alt = "Website's Logo" /></a>
 
-      <ul class = 'd-flex p-0 m-0 list-unstyled' id = 'icon-list'>
-        <li class = 'mx-2'>
-          <button id = 'open-search-panel' class = 'bg-transparent border-0 text-primary'>
-            <i class = 'bi bi-search'></i>
-          </button>
-        </li>
-        <li class = 'mx-2'>
-          <a href = 'auth.html' class = 'd-none d-md-block button bg-transparent border-0 text-primary'>
-            <i class = 'bi bi-person' style = 'font-size:23px'></i>
-          </a>
-        </li>
-        <li class = 'mx-2'>
-          <button id = 'open-cart-panel' data-count = "0" class = 'bg-transparent border-0 text-primary'>
-            <i class = 'bi bi-bag'></i>
-          </button>
-        </li>
-      </ul>
+    <ul class='d-flex p-0 m-0 list-unstyled' id='icon-list'>
+     
+     <!-- =================================================== -->
 
-      <section id = 'search-panel' class = 'w-100'>
-        <header class = 'w-100 bg-secondary p-4 d-flex justify-content-between align-items-center'>
-          <div class = 'labeled-input w-100'>
-            <input placeholder = "hello" type = 'search' id = 'search' class = 'w-100 position-relative' title = "Search"/>
-            <label for = 'search'>Search</label>
-            <button class = 'bg-transparent border-top-0 border-right-0 border-bottom-0 border-color-primary px-3'>
-              <i class = 'bi bi-search'></i>
-            </button>
-          </div>
-          <button id = 'close-search-panel' class = 'bg-transparent border-0' style = 'font-size:25px'>
-            <i class = 'bi bi-x'></i>
-          </button>
-        </header>
-        <ul id = 'search-results'>
+       <li class='mx-2 position-relative'>
+    
+    <button id='toggle-search' class='bg-transparent border-0 text-primary'>
+      <i class='bi bi-search'></i>
+    </button>
 
-        </ul>
-      </section>
+    <!-- input السيرش (مخفي) -->
+       <div class="search-wrapper position-relative">
+
+    <input
+      type="search"
+      id="search-input"
+      placeholder=" search for your product  ..."
+      class="navbar-search-input"
+      autocomplete="off"   />
+
+    <ul id="search-suggestions" ></ul>
+    </div>
+
+  </li>
+
+      
+      <!-- ======================================================== -->
+      
+      
+      <li class='mx-2'>
+        <a href='login.html' class='d-none d-md-block button bg-transparent border-0 text-primary'>
+          <i class='bi bi-person' style='font-size:23px'></i>
+        </a>
+      </li>
+      <li class='mx-2'>
+        <button id='open-cart-panel' data-count="0" class='bg-transparent border-0 text-primary'>
+          <i class='bi bi-bag'></i>
+        </button>
+      </li>
+    </ul>
 
       <section id = 'cart-panel' class = 'p-2'>
 
@@ -224,5 +233,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/search.js"></script>
   </body>
 </html>

@@ -182,12 +182,6 @@ main h1,
   transition: all 0.2s ease;
 }
 
-#shop-all-menu > li > a:hover {
-  background-color: #f4f6ee;
-  color: #0f1a14;
-  padding-left: 32px;
-}
-
 #shop-all-menu .get-back {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1rem;
