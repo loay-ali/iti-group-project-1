@@ -44,9 +44,8 @@ const container = document.querySelector(".product-grid");
 fetch("http://localhost:8000")
   .then(res => res.json())
   .then(result => {
-    // ────────────────────────────────────────────────
+    
     const productsArray = result.products || result.data || [];
-    // ────────────────────────────────────────────────
 
     if (!productsArray || !productsArray.length) {
       container.innerHTML = "<p>No products found</p>";
@@ -84,12 +83,11 @@ for (const category in categoriesMap) {
       <div class="product-grid">
   `;
 
-  // ────────────────────────────────
   categoriesMap[category].forEach(item => {
     const product = new Product(item);
     finalHTML += product.render();
   });
-  // ────────────────────────────────
+  
 
   finalHTML += `
       </div>
@@ -114,8 +112,22 @@ container.innerHTML = finalHTML;
   })
   .catch(err => {
     console.error("Error fetching products:", err);
-    container.innerHTML = "<p>خطأ في تحميل المنتجات</p>";
+    container.innerHTML = "<p> error in loading product</p>";
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
