@@ -1,4 +1,3 @@
-// نجيب الـ id من query string
 const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 

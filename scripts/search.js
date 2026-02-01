@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const list = document.getElementById('search-suggestions');
 
   if (!input || !list) return; 
-  // ===== debounce function =====
   function debounce(fn, delay) {
     let timer;
     return function (...args) {
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ===== handle search =====
   function handleSearch() {
     const value = input.value.trim();
     if (!value) {
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         list.innerHTML = '';
 
         if (results.length === 0) {
-          // ===== Bad Search=====
           const li = document.createElement('li');
           li.innerHTML = `<i class="bi bi-x-circle"></i> No Search Result  `; 
           li.style.color = '#888';
@@ -70,6 +67,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // ===== attach debounce =====
   input.addEventListener('input', debounce(handleSearch, 300));
 });
