@@ -83,7 +83,7 @@ server.get('/search/:query',(req,res) => {
 	if( !/[a-z]{1,20}/i.test(searchQuery) )
 		res.sendStatus(400);
 
-	const resultData = data['products'].filter(product => product.name.indexOf(searchQuery) != -1);
+	const resultData = data['products'].filter(product => product.name.toLowerCase().indexOf(searchQuery.toLowerCase()) != -1);
 
 	res.send(JSON.stringify({
 		count: resultData.length,
