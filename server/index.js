@@ -50,7 +50,7 @@ server.post('/register',async (req,res) => {
 			username: req.body.username,
 			phone: req.body.phone,
 			email: req.body.email,
-			password: req.body.email
+			password: req.body.password
 		};
 
 		const usersFileHandler = await fileSystem.open('users.json','r+');
